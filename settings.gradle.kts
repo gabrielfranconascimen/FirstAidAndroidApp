@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "FirstAidAndroidApp"
 include(":app")
- 
+include(":designsystem")

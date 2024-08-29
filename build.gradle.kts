@@ -2,4 +2,5 @@
 plugins {
     id(Plugins.androidApplication) version Plugins.androidApplicationVersion apply false
     id(Plugins.kotlin) version Plugins.kotlinVersion apply false
+    id(Plugins.androidLibrary) version Plugins.androidApplicationVersion apply false
 }

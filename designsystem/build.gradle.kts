@@ -1,24 +1,17 @@
 plugins {
-    id(Plugins.androidApplication)
+    id(Plugins.androidLibrary)
     id(Plugins.kotlin)
 }
 
 android {
-    namespace = App.namespace
+    namespace = "com.gabrielfranconascimen.designsystem"
     compileSdk = App.compileSdk
 
     defaultConfig {
-        applicationId = App.applcationId
         minSdk = App.mindSdk
-        targetSdk = App.targetSdk
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -38,23 +31,23 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        viewBinding = true
         compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+
 }
 
 dependencies {
-    implementation(project(Module.designSystem))
 
     implementation(Androidx.coreKtx)
-    implementation(Androidx.appcompat)
     implementation(Androidx.constraintLayout)
-    implementation(Androidx.lifecycleRuntime)
-    implementation(Androidx.navigationFragment)
-    implementation(Androidx.navigationUi)
+
+    implementation(platform(Compose.composeBom))
+    implementation(Compose.materalDesign3)
+    implementation(Compose.composePreview)
+    implementation(Compose.composeDebug)
 
     testImplementation(Test.junit)
     androidTestImplementation(Test.androidJunit)
