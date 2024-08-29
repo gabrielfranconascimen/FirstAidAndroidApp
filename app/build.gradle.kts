@@ -1,16 +1,16 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id(Plugins.androidApplication)
+    id(Plugins.kotlin)
 }
 
 android {
-    namespace = "com.gabrielfranconascimen.firstaidandroidapp"
-    compileSdk = 34
+    namespace = App.namespace
+    compileSdk = App.compileSdk
 
     defaultConfig {
-        applicationId = "com.gabrielfranconascimen.firstaidandroidapp"
-        minSdk = 24
-        targetSdk = 34
+        applicationId = App.applcationId
+        minSdk = App.mindSdk
+        targetSdk = App.targetSdk
         versionCode = 1
         versionName = "1.0"
 
