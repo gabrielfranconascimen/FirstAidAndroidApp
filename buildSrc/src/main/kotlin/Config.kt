@@ -48,3 +48,7 @@ object Compose {
     const val composeDebug = "androidx.compose.ui:ui-tooling"
     const val coilCompose = "io.coil-kt:coil-compose:$coilComposeVersion"
 }
+
+object Module {
+    const val designSystem = ":designsystem"
+}
