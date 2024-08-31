@@ -32,7 +32,7 @@ import com.gabrielfranconascimen.firstaidandroidapp.R
 @Composable
 fun FirstAidListScreen(
     content: List<FirstAidListScreenEntity>,
-    onItemClicked: (String) -> Unit
+    onItemClicked: (FirstAidListScreenEntity) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize()
@@ -46,7 +46,7 @@ fun FirstAidListScreen(
                         start = Dimens.mediumPadding,
                         end = Dimens.mediumPadding
                     ),
-                onClick = { onItemClicked(item.detailId) }
+                onClick = { onItemClicked(item) }
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
