@@ -49,6 +49,12 @@ object Compose {
     const val coilCompose = "io.coil-kt:coil-compose:$coilComposeVersion"
 }
 
+object Dependency {
+    private const val koinVersion = "3.5.6"
+
+    const val koin = "io.insert-koin:koin-android:$koinVersion"
+}
+
 object Module {
     const val designSystem = ":designsystem"
 }
