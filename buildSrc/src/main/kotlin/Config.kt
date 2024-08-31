@@ -13,6 +13,7 @@ object Plugins {
     const val androidApplication = "com.android.application"
     const val androidLibrary = "com.android.library"
     const val kotlin = "org.jetbrains.kotlin.android"
+    const val safeArgs = "androidx.navigation.safeargs.kotlin"
 }
 
 object Androidx {
@@ -28,6 +29,7 @@ object Androidx {
     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
 }
 
 object Test {
