@@ -14,7 +14,7 @@ class FirstAidListViewModel(
     private val mapper: FirstAidListMapper
 ): ViewModel() {
 
-    private val _viewState = MutableStateFlow(FirstAidViewState(loading = true))
+    private val _viewState = MutableStateFlow(FirstAidViewState())
     val viewState: StateFlow<FirstAidViewState> = _viewState
 
     init {
@@ -22,11 +22,11 @@ class FirstAidListViewModel(
     }
 
     fun tryAgain() {
-        _viewState.update { it.copy(loading = false) }
         loadData()
     }
 
     private fun loadData() {
+        _viewState.update { it.copy(loading = true, error = false) }
         viewModelScope.launch {
             val list = getFirstAidRepository.getFirstAidList()
             _viewState.update {

@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.dp
 
 @Stable
 class Dimensions(
+    val extraLargPadding: Dp,
     val largePadding: Dp,
     val mediumPadding: Dp,
     val smallPadding: Dp,
@@ -15,6 +16,7 @@ class Dimensions(
 )
 
 val DefaultDimensions = Dimensions(
+    extraLargPadding = 48.dp,
     largePadding = 24.dp,
     mediumPadding = 12.dp,
     smallPadding = 6.dp,

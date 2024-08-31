@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">FirstAidAndroidApp</string>
-    <string name="title_home">Home</string>
-    <string name="title_notifications">Profile</string>
+    <string name="app_name">Primeiros Socorros App</string>
+    <string name="title_home">Primeiros Socorros</string>
+    <string name="title_notifications">Perfil</string>
 
     <string name="icon_arrow_right_description">Icone indicando navegação de carta para detalhes</string>
 

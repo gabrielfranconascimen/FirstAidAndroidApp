@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/firstAidListFragment">
 
     <fragment
         android:id="@+id/firstAidListFragment"
         android:name="com.gabrielfranconascimen.firstaidandroidapp.presentation.firstaid.list.FirstAidListFragment"
-        android:label="@string/title_home" >
-        <!--  TODO Add destination correct      -->
+        android:label="@string/title_home">
         <action
             android:id="@+id/action_firstAidListFragment_to_firstAidDetailFragment"
-            app:destination="@id/navigation_profile"
+            app:destination="@id/firstAidDetailFragment"
             app:enterAnim="@anim/nav_default_enter_anim">
             <argument
+                android:name="title"
+                app:argType="string"/>
+            <argument
                 android:name="detailId"
-                app:argType="string"
-                app:nullable="true" />
+                app:argType="string"/>
         </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/firstAidDetailFragment"
+        android:name="com.gabrielfranconascimen.firstaidandroidapp.presentation.firstaid.details.FirstAidDetailFragment"
+        android:label="@string/title_home">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="detailId"
+            app:argType="string"/>
     </fragment>
 
     <fragment
