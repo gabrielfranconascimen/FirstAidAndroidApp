@@ -4,12 +4,12 @@ import androidx.lifecycle.viewModelScope
 import com.gabrielfranconascimen.firstaidandroidapp.common.ui.BaseViewModel
 import com.gabrielfranconascimen.firstaidandroidapp.common.ui.FAAction
 import com.gabrielfranconascimen.firstaidandroidapp.common.ui.FAViewState
-import com.gabrielfranconascimen.firstaidandroidapp.domain.firstaid.GetFirstAidList
+import com.gabrielfranconascimen.firstaidandroidapp.data.firstaid.GetFirstAidRepository
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class FirstAidListViewModel(
-    private val getFirstAidRepository: GetFirstAidList,
+    private val getFirstAidRepository: GetFirstAidRepository,
     private val mapper: FirstAidListMapper
 ): BaseViewModel<FirstAidViewState, FAAction>() {
 
@@ -27,7 +27,7 @@ class FirstAidListViewModel(
 
     private fun loadData() {
         viewModelScope.launch {
-            val list = getFirstAidRepository.execute()
+            val list = getFirstAidRepository.getFirstAidList()
             _viewState.update {
                 FirstAidViewState.Success(mapper.map(list))
             }

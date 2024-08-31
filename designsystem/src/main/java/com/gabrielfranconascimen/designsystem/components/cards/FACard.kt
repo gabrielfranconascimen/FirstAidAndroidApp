@@ -34,7 +34,7 @@ fun FACard(
         Colors.borderGray
     ),
     cardColors: CardColors = CardDefaults.cardColors(
-        containerColor = Colors.backgroundPrimary,
+        containerColor = Colors.backgroundCard,
         contentColor = Colors.text
     ),
     elevation: CardElevation = CardDefaults.cardElevation(),
