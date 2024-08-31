@@ -19,7 +19,7 @@ val DarkFAColor = FAColors(
     error = redError,
     text = Color.White,
     borderGray = Color.Gray,
-    buttonText = Color.DarkGray,
+    buttonText = Color.LightGray
 )
 
 val LightFAColor = FAColors(
@@ -30,7 +30,7 @@ val LightFAColor = FAColors(
     text = Color.Black,
     error = redError,
     borderGray = Color.Gray,
-    buttonText = Color.LightGray
+    buttonText = Color.DarkGray
 )
 
 @Stable
