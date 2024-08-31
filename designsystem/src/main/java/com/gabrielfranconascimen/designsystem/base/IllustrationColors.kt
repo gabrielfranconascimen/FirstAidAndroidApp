@@ -7,4 +7,5 @@ import androidx.compose.ui.graphics.Color
 object IllustrationColors {
     val customColor50: Color = Color.White
     val customColor100: Color = Color(0xFF253095)
+    val header: Color = Color(0xFF661111)
 }

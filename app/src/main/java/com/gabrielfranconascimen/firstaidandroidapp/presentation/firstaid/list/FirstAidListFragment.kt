@@ -27,13 +27,16 @@ class FirstAidListFragment: Fragment() {
             setContent {
                 FATheme {
                     val state by viewModel.viewState.collectAsState()
-                    when(state) {
-                        is FirstAidViewState.Loading -> FirstAidListScreenLoading()
-                        is FirstAidViewState.Error -> FirstAidListScreenError { viewModel.tryAgain() }
-                        is FirstAidViewState.Success -> {
-                            FirstAidListScreen(content = (state as FirstAidViewState.Success).data) { detailId ->
-                                FirstAidListFragmentDirections.actionFirstAidListFragmentToFirstAidDetailFragment(detailId).apply {
-                                    findNavController().navigate(this)
+                    when {
+                        state.loading -> FirstAidListScreenLoading()
+                        state.error -> FirstAidListScreenError { viewModel.tryAgain() }
+                        state.data != null -> {
+                            state.data?.let {
+                                FirstAidListScreen(content = it) { item ->
+                                    FirstAidListFragmentDirections.actionFirstAidListFragmentToFirstAidDetailFragment(
+                                        item.title,
+                                        item.detailId
+                                    ).apply { findNavController().navigate(this) }
                                 }
                             }
                         }
