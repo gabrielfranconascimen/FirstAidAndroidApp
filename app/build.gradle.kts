@@ -1,6 +1,7 @@
 plugins {
     id(Plugins.androidApplication)
     id(Plugins.kotlin)
+    id(Plugins.safeArgs)
 }
 
 android {
@@ -47,14 +48,21 @@ android {
 }
 
 dependencies {
-    implementation(project(Module.designSystem))
-
     implementation(Androidx.coreKtx)
     implementation(Androidx.appcompat)
     implementation(Androidx.constraintLayout)
     implementation(Androidx.lifecycleRuntime)
     implementation(Androidx.navigationFragment)
     implementation(Androidx.navigationUi)
+
+    implementation(platform(Compose.composeBom))
+    implementation(Compose.materalDesign3)
+    implementation(Compose.composePreview)
+    implementation(Compose.composeDebug)
+
+    implementation(Dependency.koin)
+
+    implementation(project(Module.designSystem))
 
     testImplementation(Test.junit)
     androidTestImplementation(Test.androidJunit)
