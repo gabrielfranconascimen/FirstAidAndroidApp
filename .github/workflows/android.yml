@@ -3,7 +3,6 @@ on:
   pull_request:
     types:
       - opened
-      - edited
       - synchronize
     branches:
       - 'main'
@@ -23,11 +22,10 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Verfiy base64
-        run: base64 --help
-
       - name: Load Google Service file
-        run: echo ${{ secrets.GOOGLE_SERVICE_JSON }} | base64 -d > app/google-service.json
+        env:
+          DATA: ${{ secrets.GOOGLE_SERVICE_JSON }}
+        run: echo $DATA | base64 -d > app/src/google-service.json
 
       - name: Grand permission to gradlew
         run: chmod +x gradlew
