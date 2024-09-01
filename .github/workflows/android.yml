@@ -25,7 +25,7 @@ jobs:
       - name: Load Google Service file
         env:
           DATA: ${{ secrets.GOOGLE_SERVICE_JSON }}
-        run: echo $DATA | base64 -d > app/src/google-service.json
+        run: echo $DATA | base64 -d > /home/runner/work/FirstAidAndroidApp/FirstAidAndroidApp/app/src/google-service.json
 
       - name: Grand permission to gradlew
         run: chmod +x gradlew
