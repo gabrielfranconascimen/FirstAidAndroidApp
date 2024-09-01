@@ -2,6 +2,7 @@ plugins {
     id(Plugins.androidApplication)
     id(Plugins.kotlin)
     id(Plugins.safeArgs)
+    id(Plugins.firebase)
 }
 
 android {
@@ -59,6 +60,9 @@ dependencies {
     implementation(Compose.materalDesign3)
     implementation(Compose.composePreview)
     implementation(Compose.composeDebug)
+
+    implementation(platform(Firebase.firebaseBoM))
+    implementation(Firebase.cloudFirestore)
 
     implementation(Dependency.koin)
 

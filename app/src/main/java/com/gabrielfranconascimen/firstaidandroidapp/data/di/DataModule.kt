@@ -1,6 +1,8 @@
 package com.gabrielfranconascimen.firstaidandroidapp.data.di
 
 import com.gabrielfranconascimen.firstaidandroidapp.common.network.FADispatcher
+import com.gabrielfranconascimen.firstaidandroidapp.data.firebase.FirestoreApi
+import com.gabrielfranconascimen.firstaidandroidapp.data.firebase.FirestoreApiImpl
 import com.gabrielfranconascimen.firstaidandroidapp.data.firstaid.GetFirstAidRepository
 import com.gabrielfranconascimen.firstaidandroidapp.data.firstaid.GetFirstAidRepositoryImpl
 import kotlinx.coroutines.CoroutineDispatcher
@@ -8,8 +10,9 @@ import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
 
 val dataModule = module {
+    single<FirestoreApi> { FirestoreApiImpl() }
     single { provideFADispatcher() }
-    single<GetFirstAidRepository> { GetFirstAidRepositoryImpl() }
+    single<GetFirstAidRepository> { GetFirstAidRepositoryImpl(get()) }
 }
 
 private fun provideFADispatcher(): FADispatcher {

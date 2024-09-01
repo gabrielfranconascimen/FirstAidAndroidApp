@@ -1,34 +1,18 @@
 package com.gabrielfranconascimen.firstaidandroidapp.data.firstaid
 
-import com.gabrielfranconascimen.firstaidandroidapp.common.models.FirstAid
+import com.gabrielfranconascimen.firstaidandroidapp.data.firebase.FirestoreApi
+import com.gabrielfranconascimen.firstaidandroidapp.data.models.FirstAidDetailResponse
+import com.gabrielfranconascimen.firstaidandroidapp.data.models.FirstAidResponse
 
-class GetFirstAidRepositoryImpl: GetFirstAidRepository {
+class GetFirstAidRepositoryImpl(
+    private val firestoreApi: FirestoreApi
+): GetFirstAidRepository {
 
-    override suspend fun getFirstAidList(): List<FirstAid> {
-        return localReturn()
+    override suspend fun getFirstAidList(): List<FirstAidResponse?> {
+        return firestoreApi.getFirstAidList().filterNotNull()
     }
 
-    override suspend fun getFirstAidDetailWithId(id: String): String {
-        return ""
+    override suspend fun getFirstAidDetailWithId(id: String): FirstAidDetailResponse? {
+        return firestoreApi.getFirstAidDetailWithId(id)
     }
-}
-
-private fun GetFirstAidRepositoryImpl.localReturn(): List<FirstAid> {
-    return listOf(
-        FirstAid(
-            title = "Test 1",
-            description = "Test descripton 1",
-            detailId = "id1"
-        ),
-        FirstAid(
-            title = "Test 2",
-            description = "Test description 2",
-            detailId = "id2"
-        ),
-        FirstAid(
-            title = "Test 3",
-            description = "Test description 3",
-            detailId = "id3"
-        )
-    )
 }
