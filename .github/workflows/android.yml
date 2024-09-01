@@ -21,9 +21,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'gradle'
-          
+
       - name: Test base64 code
-        run: base64 app/google-service.json
+        run: base64 /app/google-service.json
 
       - name: Grand permission to gradlew
         run: chmod +x gradlew
