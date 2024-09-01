@@ -9,11 +9,13 @@ object App {
 object Plugins {
     const val androidApplicationVersion = "8.5.0"
     const val kotlinVersion = "1.9.0"
+    const val firebaseVersion = "4.4.2"
 
     const val androidApplication = "com.android.application"
     const val androidLibrary = "com.android.library"
     const val kotlin = "org.jetbrains.kotlin.android"
     const val safeArgs = "androidx.navigation.safeargs.kotlin"
+    const val firebase = "com.google.gms.google-services"
 }
 
 object Androidx {
@@ -55,6 +57,13 @@ object Dependency {
     private const val koinVersion = "3.5.6"
 
     const val koin = "io.insert-koin:koin-android:$koinVersion"
+}
+
+object Firebase {
+    private const val firebaseBoMVersion = "33.2.0"
+
+    const val firebaseBoM ="com.google.firebase:firebase-bom:$firebaseBoMVersion"
+    const val cloudFirestore = "com.google.firebase:firebase-firestore"
 }
 
 object Module {

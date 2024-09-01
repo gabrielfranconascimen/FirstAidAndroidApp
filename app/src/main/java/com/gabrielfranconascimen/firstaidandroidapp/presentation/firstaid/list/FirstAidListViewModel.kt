@@ -2,7 +2,8 @@ package com.gabrielfranconascimen.firstaidandroidapp.presentation.firstaid.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gabrielfranconascimen.firstaidandroidapp.data.firstaid.GetFirstAidRepository
+import com.gabrielfranconascimen.firstaidandroidapp.common.network.withApiErrorHandling
+import com.gabrielfranconascimen.firstaidandroidapp.domain.firstaid.GetFirstAidList
 import com.gabrielfranconascimen.firstaidandroidapp.presentation.FAViewState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -10,7 +11,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class FirstAidListViewModel(
-    private val getFirstAidRepository: GetFirstAidRepository,
+    private val getList: GetFirstAidList,
     private val mapper: FirstAidListMapper
 ): ViewModel() {
 
@@ -28,13 +29,30 @@ class FirstAidListViewModel(
     private fun loadData() {
         _viewState.update { it.copy(loading = true, error = false) }
         viewModelScope.launch {
-            val list = getFirstAidRepository.getFirstAidList()
-            _viewState.update {
-                it.copy(
-                    loading = false,
-                    data = mapper.map(list)
-                )
-            }
+            withApiErrorHandling(
+                runBlock = {
+                    val list = getList.execute()
+                    if (list.isNotEmpty()) {
+                        _viewState.update {
+                            it.copy(
+                                loading = false,
+                                data = mapper.map(list)
+                            )
+                        }
+                    } else  {
+                        updateViewStateError()
+                    }
+                },
+                onError = {
+                    updateViewStateError()
+                }
+            )
+        }
+    }
+
+    private fun updateViewStateError() {
+        _viewState.update {
+            it.copy(loading = false, error = true, data = null)
         }
     }
 }

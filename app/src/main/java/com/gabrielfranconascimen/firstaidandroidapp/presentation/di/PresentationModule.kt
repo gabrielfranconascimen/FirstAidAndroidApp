@@ -10,6 +10,6 @@ import org.koin.dsl.module
 val presentationModule = module {
     single { FirstAidListMapper() }
     single { FirstAidDetailMapper() }
-    viewModel { FirstAidListViewModel(getFirstAidRepository = get(), mapper = get()) }
+    viewModel { FirstAidListViewModel(getList = get(), mapper = get()) }
     viewModel { FirstAidDetailViewModel(getFirsAidDetail = get(), mapper = get()) }
 }
