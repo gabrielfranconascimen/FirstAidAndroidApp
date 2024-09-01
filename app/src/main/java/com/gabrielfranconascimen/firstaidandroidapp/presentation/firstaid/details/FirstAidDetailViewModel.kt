@@ -33,7 +33,7 @@ class FirstAidDetailViewModel(
         loadData()
     }
 
-    private fun loadData() {
+    fun loadData() {
         viewModelScope.launch {
             withApiErrorHandling(
                 onError = {
@@ -46,7 +46,7 @@ class FirstAidDetailViewModel(
                     _viewState.update {
                         it.copy(
                             loading = false,
-                            data = it.data?.copy(steps = mapper.mapSteps(firstAidDetail))
+                            data = mapper.mapSteps(firstAidDetail)
                         )
                     }
                 }
@@ -57,6 +57,6 @@ class FirstAidDetailViewModel(
 
 data class FirstAidDetailViewState(
     override var loading: Boolean = false,
-    override var data: NewFirstAidDetailScreenEntity? = null,
+    override var data: FirstAidDetailScreenEntity? = null,
     override var error: Boolean = false
-) : FAViewState<NewFirstAidDetailScreenEntity>
+) : FAViewState<FirstAidDetailScreenEntity>

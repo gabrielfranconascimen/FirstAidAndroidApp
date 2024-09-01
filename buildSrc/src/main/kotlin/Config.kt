@@ -37,9 +37,12 @@ object Androidx {
 object Test {
     private const val junitVersion = "4.13.2"
     private const val androidJunitVersion = "1.2.1"
+    private const val mockkVersion = "1.13.12"
 
     const val junit = "junit:junit:$junitVersion"
+    const val junit4 = "androidx.compose.ui:ui-test-junit4"
     const val androidJunit = "androidx.test.ext:junit:$androidJunitVersion"
+    const val mockk = "io.mockk:mockk:$mockkVersion"
 }
 
 object Compose {
@@ -50,7 +53,6 @@ object Compose {
     const val materalDesign3 = "androidx.compose.material3:material3"
     const val composePreview = "androidx.compose.ui:ui-tooling-preview"
     const val composeDebug = "androidx.compose.ui:ui-tooling"
-    const val coilCompose = "io.coil-kt:coil-compose:$coilComposeVersion"
 }
 
 object Dependency {

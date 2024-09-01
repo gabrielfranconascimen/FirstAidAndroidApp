@@ -26,7 +26,7 @@ class FirstAidListViewModel(
         loadData()
     }
 
-    private fun loadData() {
+    fun loadData() {
         _viewState.update { it.copy(loading = true, error = false) }
         viewModelScope.launch {
             withApiErrorHandling(
