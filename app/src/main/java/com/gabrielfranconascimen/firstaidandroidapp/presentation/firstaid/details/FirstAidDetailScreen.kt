@@ -36,7 +36,7 @@ import com.gabrielfranconascimen.firstaidandroidapp.R
 @Composable
 fun FirstAidDetailScreen(
     title: String,
-    firstAidDetails: List<FirstAidDetailScreenEntity>?,
+    firstAidDetails: List<FirstAidDetailStepScreenEntity>?,
     isLoading: Boolean,
     isError: Boolean,
     onErrorAction: () -> Unit
@@ -141,12 +141,12 @@ private fun FirstAidDetailError(
     }
 }
 
-data class NewFirstAidDetailScreenEntity(
+data class FirstAidDetailScreenEntity(
     val title: String,
-    val steps: List<FirstAidDetailScreenEntity>
+    val steps: List<FirstAidDetailStepScreenEntity>
 )
 
-data class FirstAidDetailScreenEntity(
+data class FirstAidDetailStepScreenEntity(
     val step: String,
     val label: String
 )
@@ -160,15 +160,15 @@ private fun FirstAidDetailScreenPreview() {
             isLoading = false,
             title = "Acidente",
             firstAidDetails = listOf(
-                FirstAidDetailScreenEntity(
+                FirstAidDetailStepScreenEntity(
                     "1",
                     "Atendimento passo 1 Atendimento passo 1 Atendimento passo 1 Atendimento passo 1 Atendimento passo 1 Atendimento passo 1  Atendimento passo 1 Atendimento passo 1  Atendimento passo 1  Atendimento passo 1"
                 ),
-                FirstAidDetailScreenEntity(
+                FirstAidDetailStepScreenEntity(
                     "2",
                     "Atendimento passo 2"
                 ),
-                FirstAidDetailScreenEntity(
+                FirstAidDetailStepScreenEntity(
                     "3",
                     "Atendimento passo 3"
                 )

@@ -69,5 +69,7 @@ dependencies {
     implementation(project(Module.designSystem))
 
     testImplementation(Test.junit)
+    testImplementation(Test.mockk)
+    testImplementation(Test.junit4)
     androidTestImplementation(Test.androidJunit)
 }

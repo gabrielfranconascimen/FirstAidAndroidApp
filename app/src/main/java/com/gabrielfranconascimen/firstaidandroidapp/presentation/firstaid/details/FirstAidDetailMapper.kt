@@ -8,19 +8,22 @@ class FirstAidDetailMapper {
         return FirstAidDetailViewState(
             loading = true,
             error = false,
-            data = NewFirstAidDetailScreenEntity(
+            data = FirstAidDetailScreenEntity(
                 title = title,
                 steps = listOf()
             )
         )
     }
 
-    fun mapSteps(firstAidDetail: FirstAidDetail): List<FirstAidDetailScreenEntity> {
-        return firstAidDetail.steps.mapIndexed { index, step ->
-            FirstAidDetailScreenEntity(
-                step = "${index+1}",
-                label = step
-            )
-        }
+    fun mapSteps(firstAidDetail: FirstAidDetail): FirstAidDetailScreenEntity {
+        return FirstAidDetailScreenEntity(
+            firstAidDetail.identifier,
+            firstAidDetail.steps.mapIndexed { index, step ->
+                FirstAidDetailStepScreenEntity(
+                    step = "${index + 1}",
+                    label = step
+                )
+            }
+        )
     }
 }
