@@ -12,6 +12,7 @@ class Dimensions(
     val smallPadding: Dp,
     val roundButton: Dp,
     val borderStroke: Dp,
+    val avatarIconSize: Dp,
     val iconSize: Dp
 )
 
@@ -22,5 +23,6 @@ val DefaultDimensions = Dimensions(
     smallPadding = 6.dp,
     roundButton = 12.dp,
     borderStroke = 1.dp,
+    avatarIconSize = 64.dp,
     iconSize = 16.dp
 )
