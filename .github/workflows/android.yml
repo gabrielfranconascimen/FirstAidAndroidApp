@@ -23,8 +23,11 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
+      - name: Verfiy base64
+        run: base64 --help
+
       - name: Load Google Service file
-        run: echo ${{ secrets.GOOGLE_SERVICE_JSON }} | base64 -Dd > app/google-service.json
+        run: echo ${{ secrets.GOOGLE_SERVICE_JSON }} | base64 -di > app/google-service.json
 
       - name: Grand permission to gradlew
         run: chmod +x gradlew
