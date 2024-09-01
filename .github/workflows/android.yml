@@ -27,7 +27,13 @@ jobs:
         run: echo ${{ secrets.GOOGLE_SERVICE_JSON }} | base64 -d > /home/runner/work/FirstAidAndroidApp/FirstAidAndroidApp/app/google-service.json
 
       - name: Verify path
-        run: echo ${app/google-service.json}
+        run: echo "${app/google-service.json}"
+
+      - name: Verify path 1
+        run: echo "${{ secrets.GOOGLE_SERVICE_JSON }}"
+
+      - name: Verify path 1
+        run: echo ${{ secrets.GOOGLE_SERVICE_JSON }}
 
       - name: Grand permission to gradlew
         run: chmod +x gradlew
