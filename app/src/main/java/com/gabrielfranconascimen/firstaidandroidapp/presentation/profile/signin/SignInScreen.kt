@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.gabrielfranconascimen.designsystem.base.Dimens
 import com.gabrielfranconascimen.designsystem.base.FATheme
 import com.gabrielfranconascimen.designsystem.components.buttons.FAButton
+import com.gabrielfranconascimen.designsystem.components.buttons.FAButtonState
 import com.gabrielfranconascimen.designsystem.components.texts.FAText
 import com.gabrielfranconascimen.designsystem.components.texts.FATextField
 import com.gabrielfranconascimen.designsystem.components.texts.PasswordTextField
@@ -48,6 +49,7 @@ fun SignInScreen(
             SignInContent(
                 content.emailFieldEntity,
                 content.passwordFieldEntity,
+                content.buttonState,
                 screenActions
             )
         }
@@ -58,6 +60,7 @@ fun SignInScreen(
 private fun SignInContent(
     emailFieldEntity: FATextFieldEntity,
     passwordFieldEntity: FATextFieldEntity,
+    buttonState: FAButtonState,
     screenActions: SignInScreenActions
 ) {
     val focusManager = LocalFocusManager.current
@@ -78,6 +81,7 @@ private fun SignInContent(
     )
     Spacer(modifier = Modifier.height(Dimens.mediumPadding))
     FAButton(
+        buttonState = buttonState,
         onClick = {
             focusManager.clearFocus()
             screenActions.onEnterClicked()
@@ -110,7 +114,8 @@ data class SignInScreenEntity(
     val name: String,
     val isLogged: Boolean,
     val emailFieldEntity: FATextFieldEntity,
-    val passwordFieldEntity: FATextFieldEntity
+    val passwordFieldEntity: FATextFieldEntity,
+    val buttonState: FAButtonState = FAButtonState.Disable
 )
 
 interface SignInScreenActions {

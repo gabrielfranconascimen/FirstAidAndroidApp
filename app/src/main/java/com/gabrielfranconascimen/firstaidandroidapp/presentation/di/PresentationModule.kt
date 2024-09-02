@@ -20,7 +20,8 @@ val presentationModule = module {
         emailValidator = get(),
         passwordValidator = get(),
         signInUser = get(),
-        logOutUser = get()
+        logOutUser = get(),
+        getUser = get()
         )
     }
 }
