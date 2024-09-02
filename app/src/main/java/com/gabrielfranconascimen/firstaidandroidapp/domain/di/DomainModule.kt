@@ -22,7 +22,7 @@ val domainModule = module {
     single<PasswordValidator> { PasswordValidatorImpl() }
     single<GetFirstAidDetail> { GetFirstAidDetailImpl(getFirstAidRepository = get(), dispatcher = get(), mapper = get () ) }
     single<GetFirstAidList> { GetFirstAidListImpl(getFirstAidRepository = get(), dispatcher = get(), mapper = get() )}
-    single<SignInUser> { SignInUserImpl(authApi = get(), dispatchers = get()) }
-    single<LogOutUser> { LogOutUserImpl(authApi = get()) }
-    single { GetUser(authApi = get()) }
+    single<SignInUser> { SignInUserImpl(authRepository = get(), dispatchers = get()) }
+    single<LogOutUser> { LogOutUserImpl(authRepository = get()) }
+    single { GetUser(authRepository = get()) }
 }
