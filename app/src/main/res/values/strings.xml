@@ -7,4 +7,7 @@
 
     <string name="error_description">Houve problema ao obter os dados</string>
     <string name="button_try_again">Tentar novamente</string>
+
+    <string name="sig_in_button">Entrar</string>
+    <string name="log_out_button">Sair</string>
 </resources>

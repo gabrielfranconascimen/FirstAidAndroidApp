@@ -34,7 +34,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.gabrielfranconascimen.firstaidandroidapp.presentation.firstaid.list.FirstAidListFragment"
+        android:id="@+id/profileSignInFragment"
+        android:name="com.gabrielfranconascimen.firstaidandroidapp.presentation.profile.signin.SignInFragment"
         android:label="@string/title_notifications"/>
 </navigation>

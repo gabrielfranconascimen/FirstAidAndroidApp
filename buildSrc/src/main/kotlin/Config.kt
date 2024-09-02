@@ -66,6 +66,7 @@ object Firebase {
 
     const val firebaseBoM ="com.google.firebase:firebase-bom:$firebaseBoMVersion"
     const val cloudFirestore = "com.google.firebase:firebase-firestore"
+    const val authentication = "com.google.firebase:firebase-auth"
 }
 
 object Module {

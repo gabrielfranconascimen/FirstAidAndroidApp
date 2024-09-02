@@ -63,6 +63,7 @@ dependencies {
 
     implementation(platform(Firebase.firebaseBoM))
     implementation(Firebase.cloudFirestore)
+    implementation(Firebase.authentication)
 
     implementation(Dependency.koin)
 
