@@ -6,7 +6,7 @@ import com.gabrielfranconascimen.firstaidandroidapp.data.firstaid.GetFirstAidRep
 import kotlinx.coroutines.withContext
 
 interface GetFirstAidList {
-    suspend fun execute(): List<FirstAid>
+    suspend fun execute(): List<FirstAid>?
 }
 
 class GetFirstAidListImpl(
@@ -15,9 +15,9 @@ class GetFirstAidListImpl(
     private val mapper: GetFirstAidMapper
 ): GetFirstAidList {
 
-    override suspend fun execute(): List<FirstAid> = withContext(dispatcher.io) {
-        val firstAidListRawFiltered = getFirstAidRepository.getFirstAidList().filterNotNull()
-        firstAidListRawFiltered.map { mapper.mapFirstAidResponseToFirstAid(it) }
+    override suspend fun execute(): List<FirstAid>? = withContext(dispatcher.io) {
+        val firstAidListRawFiltered = getFirstAidRepository.getFirstAidList()?.filterNotNull()
+        firstAidListRawFiltered?.map { mapper.mapFirstAidResponseToFirstAid(it) }
     }
 
 }

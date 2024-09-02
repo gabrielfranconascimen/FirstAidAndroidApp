@@ -3,7 +3,6 @@ package com.gabrielfranconascimen.firstaidandroidapp.data.di
 import com.gabrielfranconascimen.firstaidandroidapp.common.network.FADispatcher
 import com.gabrielfranconascimen.firstaidandroidapp.data.firebase.AuthApi
 import com.gabrielfranconascimen.firstaidandroidapp.data.firebase.FirestoreApi
-import com.gabrielfranconascimen.firstaidandroidapp.data.firebase.FirestoreApiImpl
 import com.gabrielfranconascimen.firstaidandroidapp.data.firstaid.GetFirstAidRepository
 import com.gabrielfranconascimen.firstaidandroidapp.data.firstaid.GetFirstAidRepositoryImpl
 import com.gabrielfranconascimen.firstaidandroidapp.data.signin.SignInRepository
@@ -14,7 +13,7 @@ import org.koin.dsl.module
 
 val dataModule = module {
     single { AuthApi() }
-    single<FirestoreApi> { FirestoreApiImpl() }
+    single { FirestoreApi() }
     single { provideFADispatcher() }
     single<GetFirstAidRepository> { GetFirstAidRepositoryImpl(get()) }
     single<SignInRepository> { SignInRepositoryImpl(get()) }

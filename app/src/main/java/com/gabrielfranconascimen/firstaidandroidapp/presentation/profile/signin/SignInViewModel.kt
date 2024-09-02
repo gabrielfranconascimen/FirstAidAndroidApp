@@ -3,7 +3,6 @@ package com.gabrielfranconascimen.firstaidandroidapp.presentation.profile.signin
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gabrielfranconascimen.designsystem.components.buttons.FAButtonState
-import com.gabrielfranconascimen.firstaidandroidapp.common.network.withApiErrorHandling
 import com.gabrielfranconascimen.firstaidandroidapp.domain.profile.EmailValidator
 import com.gabrielfranconascimen.firstaidandroidapp.domain.profile.GetUser
 import com.gabrielfranconascimen.firstaidandroidapp.domain.profile.LogOutUser
@@ -95,12 +94,10 @@ class SignInViewModel(
 
     override fun onLogoutClicked() {
         viewModelScope.launch {
-            withApiErrorHandling(runBlock = {
-                logOutUser.execute()
-                _viewState.update {
-                    it.copy(data = it.data?.copy(isLogged = getUser.isLogged()))
-                }
-            })
+            logOutUser.execute()
+            _viewState.update {
+                it.copy(data = it.data?.copy(isLogged = getUser.isLogged()))
+            }
         }
     }
 

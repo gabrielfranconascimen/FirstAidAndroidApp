@@ -23,8 +23,10 @@ class FirstAidDetailMapperTest {
     fun `Should screen entity when return success`() {
         val result = mapper.mapSteps(FirstAidDetailMock.mockRepository())
 
-        assert(result.title == "Procedimentos")
-        assert(result.steps[0].step == "1")
+        assert(result?.title == "Procedimentos")
+        assert(result != null)
+        assert(result?.steps != null)
+        assert(result!!.steps[0].step == "1")
         assert(result.steps[0].label == "Procedimento 0")
         assert(result.steps[2].step == "3")
     }

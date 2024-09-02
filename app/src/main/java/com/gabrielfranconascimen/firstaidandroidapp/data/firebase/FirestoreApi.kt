@@ -9,16 +9,11 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 
-interface FirestoreApi {
-    suspend fun getFirstAidList(): List<FirstAidResponse?>
-    suspend fun getFirstAidDetailWithId(id: String): FirstAidDetailResponse?
-}
-
-class FirestoreApiImpl : FirestoreApi {
+class FirestoreApi {
     private val dbFirestore = Firebase.firestore
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override suspend fun getFirstAidList(): List<FirstAidResponse?> {
+    suspend fun getFirstAidList(): List<FirstAidResponse?>? {
         return suspendCancellableCoroutine { continution ->
             dbFirestore
                 .collection(Endpoints.FirstAidFirestore.list)
@@ -27,14 +22,14 @@ class FirestoreApiImpl : FirestoreApi {
                     val items = document.documents.map { it.toObject<FirstAidResponse>() }
                     continution.resume(items, null)
                 }
-                .addOnFailureListener { exception ->
-                    throw exception
+                .addOnFailureListener {
+                    continution.resume(null, null)
                 }
         }
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override suspend fun getFirstAidDetailWithId(id: String): FirstAidDetailResponse? {
+    suspend fun getFirstAidDetailWithId(id: String): FirstAidDetailResponse? {
         return suspendCancellableCoroutine { continuation ->
             dbFirestore
                 .collection(Endpoints.FirstAidFirestore.details)
@@ -44,8 +39,8 @@ class FirestoreApiImpl : FirestoreApi {
                     val data = result.toObject<FirstAidDetailResponse>()
                     continuation.resume(data, null)
                 }
-                .addOnFailureListener { exception ->
-                    throw exception
+                .addOnFailureListener {
+                    continuation.resume(null, null)
                 }
         }
     }

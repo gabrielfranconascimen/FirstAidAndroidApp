@@ -54,6 +54,9 @@ class FirstAidDetailViewModelTest {
 
     @Test
     fun `Should error when return repository error`() {
+        coEvery { getFirstAidDetail.execute(any()) } returns null
+        every { mapper.mapSteps(any()) } returns null
+
         viewModel.loadData()
 
         assertFalse(viewModel.viewState.value.loading)

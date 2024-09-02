@@ -2,7 +2,6 @@ package com.gabrielfranconascimen.firstaidandroidapp.presentation.firstaid.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gabrielfranconascimen.firstaidandroidapp.common.network.withApiErrorHandling
 import com.gabrielfranconascimen.firstaidandroidapp.domain.firstaid.GetFirstAidList
 import com.gabrielfranconascimen.firstaidandroidapp.presentation.FAViewState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,30 +28,19 @@ class FirstAidListViewModel(
     fun loadData() {
         _viewState.update { it.copy(loading = true, error = false) }
         viewModelScope.launch {
-            withApiErrorHandling(
-                runBlock = {
-                    val list = getList.execute()
-                    if (list.isNotEmpty()) {
-                        _viewState.update {
-                            it.copy(
-                                loading = false,
-                                data = mapper.map(list)
-                            )
-                        }
-                    } else  {
-                        updateViewStateError()
-                    }
-                },
-                onError = {
-                    updateViewStateError()
+            val items = getList.execute()
+            if (!items.isNullOrEmpty()) {
+                _viewState.update {
+                    it.copy(
+                        loading = false,
+                        data = mapper.map(items)
+                    )
                 }
-            )
-        }
-    }
-
-    private fun updateViewStateError() {
-        _viewState.update {
-            it.copy(loading = false, error = true, data = null)
+            } else {
+                _viewState.update {
+                    it.copy(loading = false, error = true, data = null)
+                }
+            }
         }
     }
 }
