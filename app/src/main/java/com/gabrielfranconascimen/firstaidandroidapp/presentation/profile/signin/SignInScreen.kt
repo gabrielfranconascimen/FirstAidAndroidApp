@@ -23,8 +23,8 @@ import com.gabrielfranconascimen.designsystem.base.FATheme
 import com.gabrielfranconascimen.designsystem.components.buttons.FAButton
 import com.gabrielfranconascimen.designsystem.components.texts.FAText
 import com.gabrielfranconascimen.designsystem.components.texts.FATextField
-import com.gabrielfranconascimen.designsystem.components.texts.FATextFieldEntity
 import com.gabrielfranconascimen.designsystem.components.texts.PasswordTextField
+import com.gabrielfranconascimen.designsystem.components.texts.models.FATextFieldEntity
 import com.gabrielfranconascimen.firstaidandroidapp.R
 
 @Composable
