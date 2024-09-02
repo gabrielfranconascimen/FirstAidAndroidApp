@@ -1,4 +1,4 @@
-package com.gabrielfranconascimen.firstaidandroidapp.presentation.perfil.sigin
+package com.gabrielfranconascimen.firstaidandroidapp.presentation.profile.signin
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,12 +23,14 @@ import com.gabrielfranconascimen.designsystem.base.FATheme
 import com.gabrielfranconascimen.designsystem.components.buttons.FAButton
 import com.gabrielfranconascimen.designsystem.components.texts.FAText
 import com.gabrielfranconascimen.designsystem.components.texts.FATextField
+import com.gabrielfranconascimen.designsystem.components.texts.FATextFieldEntity
+import com.gabrielfranconascimen.designsystem.components.texts.PasswordTextField
 import com.gabrielfranconascimen.firstaidandroidapp.R
 
 @Composable
-fun SigInScreen(
-    content: SigInScreenEntity,
-    screenActions: SigInScreenActions
+fun SignInScreen(
+    content: SignInScreenEntity,
+    screenActions: SignInScreenActions
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -43,31 +45,35 @@ fun SigInScreen(
         if (content.isLogged) {
             LoggedContent(content.name, screenActions)
         } else {
-            SigInContent(content.email, content.password, screenActions)
+            SignInContent(
+                content.emailFieldEntity,
+                content.passwordFieldEntity,
+                screenActions
+            )
         }
     }
 }
 
 @Composable
-private fun SigInContent(
-    email: String,
-    password: String,
-    screenActions: SigInScreenActions
+private fun SignInContent(
+    emailFieldEntity: FATextFieldEntity,
+    passwordFieldEntity: FATextFieldEntity,
+    screenActions: SignInScreenActions
 ) {
     val focusManager = LocalFocusManager.current
     FATextField(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = Dimens.mediumPadding),
-        value = email,
+        entity = emailFieldEntity,
         onValueChange = { screenActions.onEmailChanged(it) }
     )
     Spacer(modifier = Modifier.height(Dimens.smallPadding))
-    FATextField(
+    PasswordTextField(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = Dimens.mediumPadding),
-        value = password,
+        entity = passwordFieldEntity,
         onValueChange = { screenActions.onPasswordChanged(it) }
     )
     Spacer(modifier = Modifier.height(Dimens.mediumPadding))
@@ -84,7 +90,7 @@ private fun SigInContent(
 @Composable
 private fun LoggedContent(
     name: String,
-    screenActions: SigInScreenActions
+    screenActions: SignInScreenActions
 ) {
     FAText(
         modifier = Modifier
@@ -100,14 +106,14 @@ private fun LoggedContent(
     }
 }
 
-data class SigInScreenEntity(
+data class SignInScreenEntity(
     val name: String,
     val isLogged: Boolean,
-    val email: String,
-    val password: String
+    val emailFieldEntity: FATextFieldEntity,
+    val passwordFieldEntity: FATextFieldEntity
 )
 
-interface SigInScreenActions {
+interface SignInScreenActions {
     fun onEmailChanged(email: String)
     fun onPasswordChanged(password: String)
     fun onEnterClicked()
@@ -116,16 +122,22 @@ interface SigInScreenActions {
 
 @Composable
 @Preview
-private fun SigInScreenPreview() {
+private fun SignInScreenPreview() {
     FATheme {
-        SigInScreen(
-            content = SigInScreenEntity(
+        SignInScreen(
+            content = SignInScreenEntity(
                 name = "Gabriel ",
                 isLogged = true,
-                email = "",
-                password = ""
+                emailFieldEntity = FATextFieldEntity(
+                    value = "",
+                    hint = ""
+                ),
+                passwordFieldEntity = FATextFieldEntity(
+                    value = "",
+                    hint = ""
+                )
             ),
-            screenActions = object : SigInScreenActions{
+            screenActions = object : SignInScreenActions{
                 override fun onEmailChanged(email: String) { }
                 override fun onPasswordChanged(password: String) { }
                 override fun onEnterClicked() { }

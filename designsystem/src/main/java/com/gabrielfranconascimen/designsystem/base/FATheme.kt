@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.graphics.Color
 
 @Composable
 fun FATheme(
@@ -21,7 +20,6 @@ fun FATheme(
     ProvideDimens(dimension = dimension) {
         ProvideColors(colors = colors) {
             MaterialTheme(
-                colorScheme = debugColors(Color.Magenta),
                 typography = Typography(),
                 shapes = Shapes(),
                 content = content

@@ -1,7 +1,5 @@
 package com.gabrielfranconascimen.designsystem.base
 
-import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 
@@ -19,8 +17,8 @@ val LightFAColor = FAColors(
     backgroundPrimary = lightColorScheme().onPrimary,
     backgroundSecondary = lightColorScheme().onSecondary,
     backgroundCard = extraLightGray,
-    text = Color.Black,
     error = redError,
+    text = Color.Black,
     borderGray = Color.Gray,
     buttonText = Color.DarkGray
 )
@@ -60,7 +58,7 @@ class FAColors(
         private set
     var backgroundCard = mutableStateOf(backgroundCard).value
         private set
-    var backgroundOverlayPrimary = mutableStateOf(error).value
+    var error: Color = mutableStateOf(error).value
         private set
     var buttonText = mutableStateOf(buttonText).value
         private set
@@ -76,9 +74,9 @@ class FAColors(
         secondary = other.secondary
         backgroundPrimary = other.backgroundPrimary
         backgroundSecondary = other.backgroundSecondary
-        backgroundOverlayPrimary = other.backgroundOverlayPrimary
         backgroundCard = other.backgroundCard
         buttonText = other.buttonText
+        error = other.error
         text = other.text
         borderGray = other.borderGray
         illustrationColors = other.illustrationColors
@@ -90,53 +88,10 @@ class FAColors(
         backgroundPrimary = backgroundPrimary,
         backgroundSecondary = backgroundSecondary,
         backgroundCard = backgroundCard,
-        error = backgroundOverlayPrimary,
+        error = error,
         buttonText = buttonText,
         text = text,
         borderGray = borderGray,
         illustrationColors = illustrationColors
     )
 }
-
-/**
- * A Material [ColorScheme] implementation which sets all colors to [debugColor] to discourage usage of
- * [MaterialTheme.colorScheme] in preference to [FATheme.colors].
- */
-fun debugColors(debugColor: Color) = ColorScheme(
-    primary = debugColor,
-    onPrimary = debugColor,
-    primaryContainer = debugColor,
-    onPrimaryContainer = debugColor,
-    inversePrimary = debugColor,
-    secondary = debugColor,
-    onSecondary = debugColor,
-    secondaryContainer = debugColor,
-    onSecondaryContainer = debugColor,
-    tertiary = debugColor,
-    onTertiary = debugColor,
-    tertiaryContainer = debugColor,
-    onTertiaryContainer = debugColor,
-    background = debugColor,
-    onBackground = debugColor,
-    surface = debugColor,
-    onSurface = debugColor,
-    surfaceVariant = debugColor,
-    onSurfaceVariant = debugColor,
-    surfaceTint = debugColor,
-    inverseSurface = debugColor,
-    inverseOnSurface = debugColor,
-    error = debugColor,
-    onError = debugColor,
-    errorContainer = debugColor,
-    onErrorContainer = debugColor,
-    outline = debugColor,
-    outlineVariant = debugColor,
-    scrim = debugColor,
-    surfaceBright = debugColor,
-    surfaceDim = debugColor,
-    surfaceContainer = debugColor,
-    surfaceContainerHigh = debugColor,
-    surfaceContainerHighest = debugColor,
-    surfaceContainerLow = debugColor,
-    surfaceContainerLowest = debugColor
-)

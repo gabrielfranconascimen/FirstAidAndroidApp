@@ -1,6 +1,5 @@
 package com.gabrielfranconascimen.designsystem.components.texts
 
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -17,30 +16,26 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import com.gabrielfranconascimen.designsystem.R
-
+import com.gabrielfranconascimen.designsystem.components.texts.models.FATextFieldEntity
 
 @Composable
 fun PasswordTextField(
-    focusRequest: FocusRequester?,
-    hasError: Boolean,
-    value: String,
-    onUpdateValue: (String) -> Unit
+    modifier: Modifier = Modifier,
+    entity: FATextFieldEntity,
+    focusRequest: FocusRequester? = null,
+    onValueChange: (String) -> Unit
 ) {
     var showPassword by remember { mutableStateOf(false) }
-    val modifier = Modifier
-        .fillMaxWidth()
-        .apply {
+
+    FATextField(
+        modifier = modifier.apply {
             focusRequest?.let {
                 this.focusRequester(it)
             }
-        }
-    FATextField(
-        modifier = modifier,
-        value = value,
+        },
+        entity = entity,
         singleLine = true,
-        isError = hasError,
-        onValueChange = onUpdateValue,
-        hint = stringResource(id = R.string.sign_in_user_password_hint),
+        onValueChange = onValueChange,
         visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
         trailingIcon = {
             IconButton(onClick = { showPassword = !showPassword }) {

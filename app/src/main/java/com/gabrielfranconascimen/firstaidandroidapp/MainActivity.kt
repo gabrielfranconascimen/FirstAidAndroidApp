@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.firstAidListFragment,
                 R.id.firstAidDetailFragment,
-                R.id.navigation_profile
+                R.id.profileSignInFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
