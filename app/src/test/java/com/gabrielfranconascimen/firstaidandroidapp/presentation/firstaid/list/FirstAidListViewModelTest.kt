@@ -36,6 +36,7 @@ class FirstAidListViewModelTest {
     fun `Should load data when return first aid success` () {
         coEvery { getList.execute() } returns FirstAidListMock.mockRepositorySuccess()
         every { mapper.map(any()) } returns FirstAidListMock.mockMapperSuccess()
+
         viewModel.loadData()
 
         assertFalse(viewModel.viewState.value.loading)
@@ -48,6 +49,7 @@ class FirstAidListViewModelTest {
     fun `Should error when return first aid is empty`() {
         coEvery { getList.execute() } returns listOf()
         every { mapper.map(any()) } returns listOf()
+
         viewModel.loadData()
 
         assertFalse(viewModel.viewState.value.loading)
@@ -57,6 +59,9 @@ class FirstAidListViewModelTest {
 
     @Test
     fun `Should error when return repository error`() {
+        coEvery { getList.execute() } returns null
+        every { mapper.map(any()) } returns listOf()
+
         viewModel.loadData()
 
         assertFalse(viewModel.viewState.value.loading)
