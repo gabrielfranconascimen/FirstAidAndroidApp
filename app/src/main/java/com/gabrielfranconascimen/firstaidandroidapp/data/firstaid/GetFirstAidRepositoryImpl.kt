@@ -8,8 +8,8 @@ class GetFirstAidRepositoryImpl(
     private val firestoreApi: FirestoreApi
 ): GetFirstAidRepository {
 
-    override suspend fun getFirstAidList(): List<FirstAidResponse?> {
-        return firestoreApi.getFirstAidList().filterNotNull()
+    override suspend fun getFirstAidList(): List<FirstAidResponse?>? {
+        return firestoreApi.getFirstAidList()
     }
 
     override suspend fun getFirstAidDetailWithId(id: String): FirstAidDetailResponse? {

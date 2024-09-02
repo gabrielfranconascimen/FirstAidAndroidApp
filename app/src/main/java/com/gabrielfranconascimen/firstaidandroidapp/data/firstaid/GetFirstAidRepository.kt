@@ -4,6 +4,6 @@ import com.gabrielfranconascimen.firstaidandroidapp.data.models.FirstAidDetailRe
 import com.gabrielfranconascimen.firstaidandroidapp.data.models.FirstAidResponse
 
 interface GetFirstAidRepository {
-    suspend fun getFirstAidList(): List<FirstAidResponse?>
+    suspend fun getFirstAidList(): List<FirstAidResponse?>?
     suspend fun getFirstAidDetailWithId(id: String): FirstAidDetailResponse?
 }

@@ -6,7 +6,7 @@ import com.gabrielfranconascimen.firstaidandroidapp.data.firstaid.GetFirstAidRep
 import kotlinx.coroutines.withContext
 
 interface GetFirstAidDetail {
-    suspend fun execute(detailId: String): FirstAidDetail
+    suspend fun execute(detailId: String): FirstAidDetail?
 }
 
 class GetFirstAidDetailImpl(
@@ -15,14 +15,12 @@ class GetFirstAidDetailImpl(
     private val mapper: GetFirstAidMapper
 ): GetFirstAidDetail {
 
-    override suspend fun execute(detailId: String): FirstAidDetail = withContext(dispatcher.io){
-        val response = getFirstAidRepository.getFirstAidDetailWithId(detailId)
-        response?.let {
-            return@withContext mapper.mapDetailResponseToDetail(it)
-        } ?: throw ObjectInvalidException()
+    override suspend fun execute(detailId: String): FirstAidDetail? = withContext(dispatcher.io){
+        getFirstAidRepository.getFirstAidDetailWithId(detailId)?.let {
+            mapper.mapDetailResponseToDetail(it)
+        }
     }
 }
 
-class ObjectInvalidException: Exception("Problema when receive detail when identifier item")
 
 

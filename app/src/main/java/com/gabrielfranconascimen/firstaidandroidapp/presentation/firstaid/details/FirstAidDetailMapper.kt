@@ -15,15 +15,17 @@ class FirstAidDetailMapper {
         )
     }
 
-    fun mapSteps(firstAidDetail: FirstAidDetail): FirstAidDetailScreenEntity {
-        return FirstAidDetailScreenEntity(
-            firstAidDetail.identifier,
-            firstAidDetail.steps.mapIndexed { index, step ->
-                FirstAidDetailStepScreenEntity(
-                    step = "${index + 1}",
-                    label = step
-                )
-            }
-        )
+    fun mapSteps(firstAidDetail: FirstAidDetail?): FirstAidDetailScreenEntity? {
+        return firstAidDetail?.let {
+            FirstAidDetailScreenEntity(
+                it.identifier,
+                it.steps.mapIndexed { index, step ->
+                    FirstAidDetailStepScreenEntity(
+                        step = "${index + 1}",
+                        label = step
+                    )
+                }
+            )
+        }
     }
 }
